@@ -22,3 +22,4 @@ couponCodesRouter.get("/", async (_req: Request, res: Response) => {
       return handleRequestError(res, httpError);
     }
   });
+  export default couponCodesRouter;
