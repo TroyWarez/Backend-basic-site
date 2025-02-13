@@ -6,3 +6,6 @@ export const FAILED_TO_RETRIEVE_FROM_DB =
 
   export const FAILED_TO_DELETE_FROM_DB =
   "An error occurred while attempting to delete the record from the database.";
+
+  export const INVALID_COUPON =
+  "This coupon is not valid.";
