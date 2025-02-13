@@ -1,7 +1,10 @@
 import mongoose from "mongoose";
 
 const couponCodeSchema = new mongoose.Schema({
-  Code: { type: String, required: true },
+  _id: { type: String, required: true },
+  coupon: { type: String, required: true },
+  expires: { type: String, required: true },
+  discount: { type: String, required: true },
 });
 
 const CouponCode = mongoose.model("CouponCode", couponCodeSchema);
