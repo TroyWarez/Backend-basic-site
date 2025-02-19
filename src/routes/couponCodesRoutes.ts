@@ -12,14 +12,14 @@ couponCodesRouter.get("/:coupon", async (_req: Request, res: Response) => {
       if( coupons.length > 0 ) {
         if((coupons[0]?.expires as Date).getTime() >= new Date().getTime())
         {
-          res.status(200).send([{discountPercent: coupons[0]?.discount}]);
+          res.status(200).send({discountPercentage: coupons[0]?.discount});
         }
         else
         {
           const ExpiredCoupon = await Coupon.deleteOne({ _id: new mongoose.Types.ObjectId(coupons[0].id) } );
           (ExpiredCoupon.deletedCount === 1) ? console.log(`Deleted expired coupon: '${_req.params.coupon}'  from the database.`) :  console.log(`Failed to delete expired coupon: '${_req.params.coupon}'  from the database.`);
-        }
           throw new Error(`The coupon '${ _req.params.coupon}' is expired.`);
+        }
       }
       else {
         throw new Error(`The coupon '${ _req.params.coupon}' was not found.`);
