@@ -4,9 +4,11 @@ import express, { Express } from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import couponCodesRouter from "./routes/couponCodesRoutes";
+import cartRouter from "./routes/cartRoutes"
 const app: Express = express();
 
 app.use("/coupons", couponCodesRouter);
+app.use("/cart", cartRouter);
 
 app.use(
   cors({
