@@ -2,14 +2,10 @@ import mongoose from "mongoose";
 
 const cartDataSchema = new mongoose.Schema({
   _id: { type: mongoose.Types.ObjectId, required: false },
-  displayCurrencyValue: { type: Number, required: true },
-  displayCurrencyValueType: { type: String, required: true },
-  displayCurrencyValueSymbol: { type: String, required: true },
-  productImageBinData: { type: String, required: true },
-  displayItemName: { type: String, required: true },
-  quantityNumber: { type: Number, required: true },
+  cartData: {type: Array, required: true},
+  cartOwner: { type: String, required: true}
 });
 
-const Cart = mongoose.model("carts", cartDataSchema);
+const Cart = mongoose.model("cart", cartDataSchema);
 
 export default Cart;

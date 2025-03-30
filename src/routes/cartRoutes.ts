@@ -7,10 +7,10 @@ const cartRouter = express.Router();
 
 cartRouter.get("/:cart", async (_req: Request, res: Response) => {
     try {
-      const carts = await Cart.find({coupon: _req.params.coupon});
+      const cart = await Cart.find({cartOwner:  _req.params.cart});
       res.header('Access-Control-Allow-Origin', process.env.ALLOWED_ORIGINS_CORS);
-      if( carts.length > 0 ) {
-          res.status(200).send({carts});
+      if( cart.length > 0 ) {
+          res.status(200).send({cart});
       }
       else {
         throw new Error(`The cart was not found.`);
