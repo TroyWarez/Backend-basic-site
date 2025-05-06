@@ -5,10 +5,12 @@ import mongoose from "mongoose";
 import cors from "cors";
 import couponCodesRouter from "./routes/couponCodesRoutes";
 import cartRouter from "./routes/cartRoutes"
+import orderRouter from "./routes/orderRoutes"
 const app: Express = express();
 
-app.use("/coupons", couponCodesRouter);
-app.use("/cart", cartRouter);
+app.use("/api/get/coupons", couponCodesRouter);
+app.use("/api/get/cart", cartRouter);
+app.use("/api/post/orders", orderRouter);
 
 app.use(
   cors({
