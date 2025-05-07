@@ -15,7 +15,10 @@ const orderDataSchema = new mongoose.Schema({
   email: {type: String, required: true },
   phoneNumber: {type: String, required: true },
   promoEmails: {type: Boolean, required: true },
-  orderedItems: {type: Array<StoreItem>, required: true }
+  orderedItems: {type: Array<StoreItem>, required: true },
+  orderNumber: {type: Number, required: false },
+  timestamp: {type: String, required: false },
+
 });
 
 const Order = mongoose.model("order", orderDataSchema);
