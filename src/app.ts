@@ -8,15 +8,21 @@ import cartRouter from "./routes/cartRoutes"
 import orderRouter from "./routes/orderRoutes"
 const app: Express = express();
 
-app.use("/api/get/coupons", couponCodesRouter);
-app.use("/api/get/cart", cartRouter);
-app.use("/api/post/orders", orderRouter);
+app.use(bodyParser.json());
 
 app.use(
   cors({
     origin: process.env.ALLOWED_ORIGINS_CORS,
   })
 );
+
+app.use("/api/get/coupons", couponCodesRouter);
+
+app.use("/api/get/cart", cartRouter);
+
+app.use("/api/post/orders", orderRouter);
+
+
 
 mongoose
   .connect(process.env.MONGODB_CONNECTION_STRING!)
