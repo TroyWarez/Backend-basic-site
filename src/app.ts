@@ -6,6 +6,7 @@ import cors from "cors";
 import couponCodesRouter from "./routes/couponCodesRoutes";
 import cartRouter from "./routes/cartRoutes"
 import orderRouter from "./routes/orderRoutes"
+import userRouter from "./routes/userRoutes";
 const app: Express = express();
 
 app.use(bodyParser.json());
@@ -22,6 +23,7 @@ app.use("/api/get/cart", cartRouter);
 
 app.use("/api/post/orders", orderRouter);
 
+app.use("/api/users", userRouter);
 
 
 mongoose
