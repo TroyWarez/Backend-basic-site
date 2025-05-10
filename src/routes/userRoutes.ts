@@ -1,3 +1,4 @@
+import "dotenv/config";
 import bcrypt from "bcryptjs";
 import express from "express";
 import jwt from "jsonwebtoken";
@@ -14,7 +15,7 @@ import checkAuth from "../middlewares/auth";
 const usersRouter = express.Router();
 
 const JWT_SECRET = process.env.JWT_SECRET!;
-const JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN!;
+const JWT_EXPIRES_IN = '2d';
 
 usersRouter.post("/signup", async (req, res) => {
   try {
@@ -48,7 +49,7 @@ usersRouter.post("/signup", async (req, res) => {
 
     const token = jwt.sign(
       { _id: result.id, username: result.username },
-      JWT_SECRET,
+      (JWT_SECRET),
       { expiresIn: JWT_EXPIRES_IN }
     );
 
@@ -78,7 +79,7 @@ usersRouter.post("/login", async (req, res) => {
       if (isValidPassword) {
         const token = jwt.sign(
           { _id: user.id, username: user.username },
-          JWT_SECRET,
+          (JWT_SECRET),
           { expiresIn: JWT_EXPIRES_IN }
         );
 
