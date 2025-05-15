@@ -7,6 +7,7 @@ import couponCodesRouter from "./routes/couponCodesRoutes";
 import cartRouter from "./routes/cartRoutes"
 import orderRouter from "./routes/orderRoutes"
 import userRouter from "./routes/userRoutes";
+import productRoutes from "./routes/productRoutes";
 const app: Express = express();
 
 app.use(bodyParser.json());
@@ -20,6 +21,8 @@ app.use(
 app.use("/api/get/coupons", couponCodesRouter);
 
 app.use("/api/get/cart", cartRouter);
+
+app.use("/api/get/products", productRoutes);
 
 app.use("/api/post/orders", orderRouter);
 
