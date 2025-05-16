@@ -7,7 +7,7 @@ const productRoutes = express.Router();
 
 productRoutes.get("/:product", async (_req: Request, res: Response) => {
     try {
-      const products = await Product.find();
+      const products = await Product.find((_req.params.product !== '0') ? {sku: _req.params.product} : {});
       res.header('Access-Control-Allow-Origin', process.env.ALLOWED_ORIGINS_CORS);
       if( products.length > 0 ) {
           res.status(200).send(products);
