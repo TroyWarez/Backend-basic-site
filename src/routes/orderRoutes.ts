@@ -21,7 +21,7 @@ orderRouter.post("/:order", async (_req: Request, res: Response) => {
       await order.save({ session });
       await session.commitTransaction();
 
-      res.status(200).send({redirectUrl: encodeURI(`/order-status?OrderNumber=${order.orderNumber}&firstName=${order.firstName}&email=${order.email}`)});
+      res.status(200).send({order});
     } catch (error: any) {
       const httpError: HttpError = {
         httpCode: 400,

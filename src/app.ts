@@ -8,6 +8,7 @@ import orderRouter from "./routes/orderRoutes"
 import userRouter from "./routes/userRoutes";
 import productRoutes from "./routes/productRoutes";
 import cartRouter from "./routes/cartRoutes";
+import addressRoutes from "./routes/addressRoutes";
 const app: Express = express();
 
 app.use(bodyParser.json());
@@ -27,6 +28,8 @@ app.use("/api/post/orders", orderRouter);
 app.use("/api/get/coupons", couponCodesRouter);
 
 app.use("/api/cart", cartRouter);
+
+app.use("/api/addresses", addressRoutes);
 
 
 
