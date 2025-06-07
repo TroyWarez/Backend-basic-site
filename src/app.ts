@@ -29,6 +29,7 @@ app.use('/legal/privacy/privacy-policy', express.static(__dirname + '/public'));
 app.use('/terms-and-conditions', express.static(__dirname + '/public'));
 app.use('/legal', express.static(__dirname + '/public'));
 app.use('/order-status', express.static(__dirname + '/public'));
+app.use('/tpong', express.static(__dirname + '/public'));
 
 app.listen(port, () => console.log(`Server listening on port: ${port} ${__dirname}`));
 app.use(bodyParser.json());
