@@ -10,8 +10,17 @@ import productRoutes from "./routes/productRoutes";
 import cartRouter from "./routes/cartRoutes";
 import addressRoutes from "./routes/addressRoutes";
 const app: Express = express();
+import fs from "fs";
+import http from "https";
 const port = 443;
 
+const privateKey  = fs.readFileSync('sslcert/server.key');
+const certificate = fs.readFileSync('sslcert/server.crt');
+
+const credentials = {key: privateKey, cert: certificate};
+
+// your express configuration here
+const httpsServer = http.createServer(credentials, app);
 
 // Mount the middleware at "/static" to serve static content only when their request path is prefixed with "/static".
 
@@ -28,7 +37,6 @@ app.use('/legal', express.static(__dirname + '/public'));
 app.use('/order-status', express.static(__dirname + '/public'));
 app.use('/tpong', express.static(__dirname + '/public'));
 
-app.listen(port, () => console.log(`Server listening on port: ${port} ${__dirname}`));
 app.use(bodyParser.json());
 
 app.use(
@@ -54,7 +62,7 @@ mongoose
   .then(() => {
     console.log(`Successfully connected to the db.`);
     const PORT = process.env.PORT || 3000;
-    app.listen(3000, () => {
+    httpsServer.listen(3000, () => {
       console.log(`Listening on http://localhost:${3000}`);
     });
   })
