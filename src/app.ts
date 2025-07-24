@@ -9,11 +9,8 @@ import userRouter from "./routes/userRoutes";
 import productRoutes from "./routes/productRoutes";
 import cartRouter from "./routes/cartRoutes";
 import addressRoutes from "./routes/addressRoutes";
-import serveStatic from "serve-static";
 const app: Express = express();
 const port = 443;
-
-const PORT = 3000;
 
 
 // Mount the middleware at "/static" to serve static content only when their request path is prefixed with "/static".
